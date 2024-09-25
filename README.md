@@ -1,5 +1,5 @@
 ### Key Steps
-
+![Capture d’écran 2024-09-25 à 16 56 21](https://github.com/user-attachments/assets/135206f2-c554-4ebc-803b-2a4beba66ea9)
 1. **AWS Amplify Hosting**:
    - **Initialize and configure Amplify** to host your frontend.
      - This step ensures your **HTML-based UI** for submitting ingredients is hosted with **continuous deployment** enabled via GitHub.
@@ -30,3 +30,4 @@
 2. **Frontend sends data** to backend (via Amplify API) ➡️ 
 3. **Lambda function processes request** (uses Bedrock for AI generation) ➡️ 
 4. **Recipe is returned to frontend** for display to the user.
+
