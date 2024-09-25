@@ -1,4 +1,4 @@
-### Key Steps with Links Between Each One
+### Key Steps
 
 1. **AWS Amplify Hosting**:
    - **Initialize and configure Amplify** to host your frontend.
