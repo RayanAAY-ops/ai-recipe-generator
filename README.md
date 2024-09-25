@@ -1,51 +1,32 @@
-# React + TypeScript + Vite
+### Key Steps with Links Between Each One
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. **AWS Amplify Hosting**:
+   - **Initialize and configure Amplify** to host your frontend.
+     - This step ensures your **HTML-based UI** for submitting ingredients is hosted with **continuous deployment** enabled via GitHub.
+   - **Link**: Frontend deployment ensures users can access the app for ingredient submission.
 
-Currently, two official plugins are available:
+2. **Amplify Auth Setup**:
+   - Add **Amplify Auth** to enable user login and authentication using **Amazon Cognito**.
+   - **Link**: Auth secures access to the app, ensuring only authenticated users can submit ingredient requests to the backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+3. **Amazon Bedrock & Claude 3 Sonnet Access**:
+   - Set up permissions for the backend to access **Amazon Bedrock** and integrate the **Claude 3 Sonnet model** to generate recipes.
+   - **Link**: Bedrock provides AI model access, allowing the backend to generate recipes based on user-inputted ingredients.
 
-## Expanding the ESLint configuration
+4. **Backend Application Using AWS Lambda**:
+   - Create a **serverless backend** with AWS Lambda and API Gateway using Amplify API.
+   - **Link**: The Lambda function processes ingredient submissions from the frontend and interacts with the Claude 3 Sonnet model via Bedrock.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+5. **Amplify DataStore Integration**:
+   - Configure **Amplify DataStore** to connect the frontend to the backend.
+   - **Link**: DataStore facilitates the seamless flow of data between the frontend (ingredient submission) and backend (recipe generation).
 
-- Configure the top-level `parserOptions` property like this:
+6. **Frontend-Backend Connection**:
+   - Implement **API calls** in the frontend to send user-submitted ingredients to the backend for processing.
+   - **Link**: This connection ensures that when a user submits ingredients, the backend requests an AI-generated recipe from Bedrock and returns it to the frontend.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# ai-recipe-generator
+### Overall Flow:
+1. **User inputs ingredients** ➡️ 
+2. **Frontend sends data** to backend (via Amplify API) ➡️ 
+3. **Lambda function processes request** (uses Bedrock for AI generation) ➡️ 
+4. **Recipe is returned to frontend** for display to the user.
